@@ -1,0 +1,74 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-9">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Description</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Update</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of resultat">
+            <td>{{ item.name }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.description }}</td>
+            <td>
+              <button class="btn btn-outline-danger" (click)="remove(item._id)">
+                Delete
+              </button>
+            </td>
+            <td>
+              <button
+                (click)="hidden(item._id)"
+                class="btn btn-outline-primary"
+              >
+                Update
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-3 text-right">
+      <button (click)="navig()" class="btn btn-outline-secondary">
+        <i class="fa fa-plus"></i>New Book
+      </button>
+
+      <form *ngIf="bool" [formGroup]="appsForm" (ngSubmit)="Update()">
+        <div class="form-group mt-5">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Name*"
+            formControlName="name"
+          />
+        </div>
+        <br />
+        <div class="form-group">
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Enter email*"
+            formControlName="email"
+          />
+        </div>
+        <br />
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter description*"
+            formControlName="description"
+          />
+        </div>
+        <button type="submit" class="btn btn-outline-warning btn-block">
+          Update
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
